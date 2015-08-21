@@ -1,6 +1,6 @@
 class V1::FlavorsController < ApplicationController
   before_action :authenticate_v1_user!
-  skip_before_action :authenticate_v1_user!, only: [:index, :show]
+  skip_before_action :authenticate_v1_user!, only: [:index, :show, :all]
 
   def create
     @flavor = Flavor.new(flavor_create_params)
@@ -16,6 +16,10 @@ class V1::FlavorsController < ApplicationController
   end
 
   def admin_index
+    @flavors = Flavor.all.order(:name)
+  end
+
+  def all
     @flavors = Flavor.all.order(:name)
   end
 

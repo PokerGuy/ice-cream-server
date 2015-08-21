@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150808134919) do
+ActiveRecord::Schema.define(version: 20150821151022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20150808134919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "blogs", ["created_at"], name: "index_blogs_on_created_at", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -51,13 +53,19 @@ ActiveRecord::Schema.define(version: 20150808134919) do
     t.string   "bt_transaction_id"
   end
 
+  add_index "donations", ["created_at"], name: "index_donations_on_created_at", using: :btree
+
   create_table "flavors", force: :cascade do |t|
     t.string   "name"
     t.integer  "stock_quantity"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "lock_version",   default: 0
+    t.text     "description"
+    t.text     "ingredients"
   end
+
+  add_index "flavors", ["name"], name: "index_flavors_on_name", using: :btree
 
   create_table "order_line_items", force: :cascade do |t|
     t.integer  "order_id"
@@ -66,6 +74,8 @@ ActiveRecord::Schema.define(version: 20150808134919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "order_line_items", ["flavor_id", "order_id"], name: "index_order_line_items_on_flavor_id_and_order_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
     t.string   "name"
@@ -77,6 +87,8 @@ ActiveRecord::Schema.define(version: 20150808134919) do
     t.string   "nonce"
   end
 
+  add_index "orders", ["created_at"], name: "index_orders_on_created_at", using: :btree
+
   create_table "prices", force: :cascade do |t|
     t.integer  "flavor_id"
     t.date     "start_date"
@@ -85,6 +97,8 @@ ActiveRecord::Schema.define(version: 20150808134919) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "prices", ["flavor_id"], name: "index_prices_on_flavor_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "provider",                            null: false
