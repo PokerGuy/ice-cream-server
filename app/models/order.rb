@@ -49,6 +49,11 @@ class Order < ActiveRecord::Base
         to: self.phone_number,
         body: 'This is an auto confirmation from zoe-doodle.com. Thank you for your order. We will contact you soon via text message to arrange delivery.'
     )
+    client.messages.create(
+        from: '+15129601502',
+        to: '+14254423715',
+        body: "#{self.name} just placed an order for #{self.order_line_items.sum(:quantity)} pints."
+    )
   end
 
   def notify_new_order

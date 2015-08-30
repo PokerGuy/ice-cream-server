@@ -20,7 +20,7 @@ class V1::FlavorsController < ApplicationController
   end
 
   def all
-    @flavors = Flavor.all.order(:name)
+    @flavors = Flavor.all.order(stock_quantity: :desc, name: :asc)
   end
 
   def show
@@ -38,10 +38,10 @@ class V1::FlavorsController < ApplicationController
   end
 
   def flavor_create_params
-    params.require(:flavor).permit(:name, :stock_quantity, prices_attributes: [:price])
+    params.require(:flavor).permit(:name, :stock_quantity, :description, :ingredients, prices_attributes: [:price])
   end
 
   def flavor_update_params
-    params.require(:flavor).permit(:name, :stock_quantity)
+    params.require(:flavor).permit(:name, :stock_quantity, :description, :ingredients)
   end
 end
