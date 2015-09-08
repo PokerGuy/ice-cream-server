@@ -69,8 +69,8 @@
       <file leaf-file-name="01ssl.config" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.ebextensions/01ssl.config">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0416666" vertical-offset="0" max-vertical-offset="2790">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.7916667" vertical-offset="2271" max-vertical-offset="2775">
+              <caret line="178" column="4" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -154,8 +154,8 @@
         <option value="$PROJECT_DIR$/.elasticbeanstalk/.ebextensions" />
         <option value="$PROJECT_DIR$/.ebextensions/sslconfig.yml" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/.ebextensions/01ssl.config" />
         <option value="$PROJECT_DIR$/app/views/v1/flavors/admin_index.json.jbuilder" />
+        <option value="$PROJECT_DIR$/.ebextensions/01ssl.config" />
       </list>
     </option>
   </component>
@@ -1106,8 +1106,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.ebextensions/01ssl.config">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0416666" vertical-offset="0" max-vertical-offset="2790">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7916667" vertical-offset="2271" max-vertical-offset="2775">
+          <caret line="178" column="4" selection-start-line="178" selection-start-column="4" selection-end-line="178" selection-end-column="4" />
           <folding />
         </state>
       </provider>
