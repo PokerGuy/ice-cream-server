@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
 
   validate :charge_credit_card, :on => :create
 
-  after_create :notify_new_order, :sendConfirmationText, :notifyMe
+  after_create :notify_new_order, :sendConfirmationText
 
   def must_have_one_line_item
     if !self.order_line_items.any?
@@ -49,10 +49,7 @@ class Order < ActiveRecord::Base
         to: self.phone_number,
         body: 'This is an auto confirmation from zoe-doodle.com. Thank you for your order. We will contact you soon via text message to arrange delivery.'
     )
-  end
-
-  def notifyMe
-    client = Twilio::REST::Client.new
+    sleep(30.seconds)
     client.messages.create(
         from: '+15129601502',
         to: '+14254423715',
@@ -64,5 +61,5 @@ class Order < ActiveRecord::Base
     $redis.publish('message', {type: 'newOrder'}.to_json)
   end
 
-  handle_asynchronously :sendConfirmationText, :notifyMe
+  handle_asynchronously :sendConfirmationText
 end
